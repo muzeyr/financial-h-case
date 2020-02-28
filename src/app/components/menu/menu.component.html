@@ -1,0 +1,11 @@
+<h3>Menu</h3>
+<div class="list-group">
+    <a class="list-group-item active">Menu</a>
+</div>
+<ul class="list-group" *ngFor="let menu of menus">
+        <li class="list-group-item">
+            <i class="fas {{menu.icon}} text-info mx-1"></i>
+            <a routerLink="{{menu.url}}">{{menu.title}}  
+            <span class="badge badge-primary badge-pill pull-right">14</span></a></li>
+   
+</ul>
