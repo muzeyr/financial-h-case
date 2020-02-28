@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  url: 'https://reporting.rpdpymnt.com/api/v3/merchant/'
 };
