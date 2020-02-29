@@ -3,7 +3,8 @@ import { TransactionService } from 'src/app/services/transaction/transaction.ser
 import { TransactionReport } from 'src/app/models/transaction/transaction-report';
 import { NgbDate, NgbCalendar, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { TransactionRequest } from '../../../models/transaction/transaction-request';
-import { TransactionQuery, TransactionDetail, MerchantTransaction } from 'src/app/models/transaction/transaction-query';
+import { TransactionQuery, TransactionDetail, MerchantTransaction,
+    MerchantTransactionClient, MerchantClient } from 'src/app/models/transaction/transaction-query';
 import { TransactionClient } from 'src/app/models/transaction/transaction-client';
 import { MatTableDataSource } from '@angular/material/table';
 import { PageEvent } from '@angular/material/paginator';
@@ -15,6 +16,7 @@ import { CustomerInfo } from './../../../models/transaction/transaction-query';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { TransactionDetailComponent } from '../../transaction-detail/transaction-detail.component';
 import { CustomerInfoComponent } from '../../customer-info/customer-info.component';
+import { Router } from '@angular/router';
 export class SelectModal {
   public uuid: string;
   public label: string;
@@ -35,7 +37,7 @@ export class TransactionQueryComponent implements OnInit {
   public highValue: number;
   public page: Pageable;
   public totalElement: number;
-  public displayedColumns: string[] = ['name', 'transaction', 'status'];
+  public displayedColumns: string[] = ['name', 'transaction', 'client', 'status'];
   public statusSelect: SelectModal[] =
     [
       { uuid: 'APPROVED', label: 'APPROVED' },
@@ -81,6 +83,7 @@ export class TransactionQueryComponent implements OnInit {
               private readonly ngxService: NgxUiLoaderService,
               private readonly formBuilder: FormBuilder,
               public dialog: MatDialog,
+              private readonly router: Router,
               public formatter: NgbDateParserFormatter) {
     this.showTable = false;
     const firtDate = new Date();
@@ -151,7 +154,7 @@ export class TransactionQueryComponent implements OnInit {
     this.req.filterValue = this.form.value.filterValue;
     this.req.operation = this.form.value.operation;
     this.req.paymentMethod = this.form.value.paymentMethod;
-    this.totalElement = 1000; //Servisden toplam kayıt sayısı dönmediği için ekledim
+    this.totalElement = 850;
     this.ngxService.start();
     this.transactionService.list(this.req).subscribe(data => {
       this.response = data;
@@ -165,6 +168,9 @@ export class TransactionQueryComponent implements OnInit {
     }, error => {
       this.ngxService.stop();
     });
+  }
+  client(item: MerchantClient) {
+    this.router.navigateByUrl('/transaction/' + item.transactionId);
   }
   openDialog(info: CustomerInfo) {
 

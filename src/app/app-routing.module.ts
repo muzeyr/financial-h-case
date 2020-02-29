@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'logout', component: LogutComponent},
   { path: 'transaction-query', component: TransactionQueryComponent, canActivate: [AuthGuard] },
   { path: 'transaction-report', component: TransactionReportComponent, canActivate: [AuthGuard] },
-  { path: 'transaction', component: TransactionComponent, canActivate: [AuthGuard] }
+  { path: 'transaction/:id', component: TransactionComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

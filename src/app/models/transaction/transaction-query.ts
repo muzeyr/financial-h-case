@@ -2,7 +2,7 @@ export class TransactionDetail {
     public fx: Fx;
     public customerInfo: CustomerInfo;
     public merchant: MerchantMain;
-    public transaction: MerchantTransaction;
+    public transaction: MerchantTransactionClient;
     public ipn: any;
     public acquirer: any;
     public refundable: any;
@@ -31,7 +31,33 @@ export class MerchantTransaction {
     public merchant: Merchant;
 
 }
+export class MerchantTransactionClient {
+    public merchant: MerchantClient;
+}
 
+export class MerchantClient {
+    public referenceNo: string;
+    public merchantId: number;
+    public status: string;
+    public channel: string;
+
+    public customData: string;
+    public chainId: string;
+    public agentInfoId: string;
+
+    public operation: string;
+    public fxTransactionId: number;
+    public updatedat: string;
+    public createdat: string;
+    public id: number;
+    public acquirerTransactionId: number;
+    public code: string;
+    public message: string;
+    public transactionId: string;
+    public agent: Agent;
+    public merchant: Merchant;
+    public type: string;
+}
 export class Agent {
     public id: number;
     public customerIp: string;

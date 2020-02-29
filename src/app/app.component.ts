@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectorRef, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Menu } from './models/general/menu';
 import { UserInfo } from './models/user/user-info';
@@ -17,15 +17,6 @@ export class AppComponent implements OnDestroy {
   currentUser: UserInfo;
   public form: FormGroup;
 
-
-  fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
-  public menus: Menu[] = [
-    {title: 'Dashboard' , url: 'dashboard', icon: 'dashboard'},
-    {title: 'Transaction Report' , url: 'transaction-report', icon: 'dehaze'},
-    {title: 'Transaction Query' , url: 'transaction-query', icon: 'report'},
-    {title: 'Transaction' , url: 'transaction', icon: 'dns'},
-    {title: 'Logout' , url: 'logout', icon: 'power_settings_new'},
-  ];
   private mobileQuerylistener: () => void;
 
   constructor(changeDetectorRef: ChangeDetectorRef,
@@ -46,9 +37,5 @@ export class AppComponent implements OnDestroy {
   public ngOnDestroy() {
     this.mobileQuery.removeEventListener('change', this.mobileQuerylistener);
   }
-  public logout(): void {
-    this.authenticationService.logout();
-    this.router.navigateByUrl('/login');
 
-  }
 }

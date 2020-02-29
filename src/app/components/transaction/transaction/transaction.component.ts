@@ -4,6 +4,7 @@ import { TransactionService } from 'src/app/services/transaction/transaction.ser
 import { TransactionClient } from 'src/app/models/transaction/transaction-client';
 import { TransactionDetail } from 'src/app/models/transaction/transaction-query';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-transaction',
@@ -11,27 +12,25 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
   styleUrls: ['./transaction.component.scss']
 })
 export class TransactionComponent implements OnInit {
-  public form: FormGroup;
   public clientDetail: TransactionDetail;
-  public operationLock = false;
+  public operationLock = true;
 
-  constructor(private readonly formBuilder: FormBuilder,
-              private readonly ngxService: NgxUiLoaderService,
+  constructor(private readonly ngxService: NgxUiLoaderService,
+              private readonly activatedRouter: ActivatedRoute,
               private readonly transactionService: TransactionService) {
-      this.form = formBuilder.group({
-        transaction: ['', [Validators.required]],
-      });
+
     }
 
   public ngOnInit(): void {
-    this.ngxService.start();
-    const client = new TransactionClient();
-    client.transactionId = '1011028-1539357144-1293';
-    this.transactionService.get(client).subscribe(data => {
-      this.clientDetail = data;
-      console.log(data);
-      this.operationLock = true;
-      this.ngxService.stop();
+    this.activatedRouter.paramMap.subscribe(params => {
+      this.ngxService.start();
+      const client = new TransactionClient();
+      client.transactionId = params.get('id');
+      this.transactionService.get(client).subscribe(data => {
+        this.clientDetail = data;
+        this.operationLock = true;
+        this.ngxService.stop();
+      });
     });
-  } 
+  }
 }
