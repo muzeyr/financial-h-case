@@ -48,3 +48,5 @@ Bootstrap kullanacağım için CSS seçtim. \
 
 
 ![Demo Page Gif Uzeyr OZCAN](MUZEYR_1.gif)
+![Demo Page Gif Uzeyr OZCAN](MUZEYR_2.gif)
+![Demo Page Gif Uzeyr OZCAN](MUZEYR_3.gif)
