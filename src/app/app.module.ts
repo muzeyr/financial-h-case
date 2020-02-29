@@ -118,7 +118,7 @@ const materials = [
     TransactionQueryComponent,
     LogutComponent,
     CustomerInfoComponent,
-    TransactionDetailComponent
+    TransactionDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -130,7 +130,7 @@ const materials = [
     materials,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule, 
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
   ],
   exports: [

@@ -1,64 +1,38 @@
-<div class="container">
-  <div class="row"  *ngIf="showDateFilter">
-    <div class="col-md-12">
-      <form class="form-inline">
-        <div class="form-group hidden">
-          <div class="input-group">
-            <input name="datepicker"
-                   class="form-control"
-                   ngbDatepicker
-                   #datepicker="ngbDatepicker"
-                   [autoClose]="'outside'"
-                   (dateSelect)="onDateSelection($event)"
-                   [displayMonths]="2"
-                   [dayTemplate]="t"
-                   outsideDays="hidden"
-                   [startDate]="fromDate">
-            <ng-template #t let-date let-focused="focused">
-              <span class="custom-day"
-                    [class.focused]="focused"
-                    [class.range]="isRange(date)"
-                    [class.faded]="isHovered(date) || isInside(date)"
-                    (mouseenter)="hoveredDate = date"
-                    (mouseleave)="hoveredDate = null">
-                {{ date.day }}
-              </span>
-            </ng-template>
-          </div>
+<div class="shadow-lg">
+  <form [formGroup]="form" class="form-horizontal">
+
+    <div class="row" *ngIf="showDateFilter">
+        <div class="col-md-3">
+
         </div>
-        <div class="form-group">
-          <div class="input-group">
-            <input #dpFromDate
-                   class="form-control" placeholder="yyyy-mm-dd"
-                   name="dpFromDate"
-                   [value]="formatter.format(fromDate)"
-                   (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"></button>
-            </div>
-          </div>
+        <div class="col-md-3">
+            <mat-form-field>
+                <input matInput [matDatepicker]="fromDate" formControlName="fromDate" placeholder="From Date"
+                  (click)="fromDate.open()">
+                <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
+                <mat-datepicker #fromDate></mat-datepicker>
+              </mat-form-field>
         </div>
-        <div class="form-group ml-2">
-          <div class="input-group">
-            <input #dpToDate
-                   class="form-control" placeholder="yyyy-mm-dd"
-                   name="dpToDate"
-                   [value]="formatter.format(toDate)"
-                   (input)="toDate = validateInput(toDate, dpToDate.value)">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"></button>
-            </div>
-          </div>
+        <div class="col-md-2">
+            <mat-form-field>
+                <input matInput [matDatepicker]="toDate" formControlName="toDate" placeholder="To Date"
+                  (click)="toDate.open()">
+                <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
+                <mat-datepicker #toDate></mat-datepicker>
+              </mat-form-field>
         </div>
-      </form>
+        <div class="col-md-2">
+            <button mat-raised-button type="button" style="background-color:#a02429" (click)="onloadData()" class="full-width" color="primary">
+                Search<i class="material-icons">
+                  search
+                </i>
+  
+              </button>
+        </div>
     </div>
-  </div>
-  <div class="row" >
-    <div class="col-xl-3 col-md-6 mb-4" > <br/> </div>
-  </div>
-  <div class="row" *ngIf="isLoadComplate">
-    <div class="col-xl-3 col-md-6 mb-4" 
-              *ngFor="let item of transactionResponse.response;let i=index;">
+
+    <div class="row" *ngIf="isLoadComplate">
+      <div class="col-xl-3 col-md-6 mb-4" *ngFor="let item of transactionResponse.response;let i=index;">
         <div class="card border-left-{{randomCss()}} shadow h-100 py-2">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
@@ -73,4 +47,6 @@
           </div>
         </div>
       </div>
-
+    </div>
+  </form>
+</div>

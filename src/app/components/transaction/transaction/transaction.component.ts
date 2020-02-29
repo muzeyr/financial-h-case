@@ -24,22 +24,14 @@ export class TransactionComponent implements OnInit {
     }
 
   public ngOnInit(): void {
-    this.applyFilter();
-  }
-  public applyFilter(): void {
-    if (this.form.valid) {
-     // this.toastr.errorToastr('Please check required field', 'Valitadion error');
-    } else {
-      this.ngxService.start();
-      console.log('..');
-      const client = new TransactionClient();
-      client.transactionId = '1011028-1539357144-1293';
-      this.transactionService.get(client).subscribe(data => {
-        this.clientDetail = data;
-        console.log(data);
-        this.operationLock = true;
-        this.ngxService.stop();
-      });
-    }
-  }
+    this.ngxService.start();
+    const client = new TransactionClient();
+    client.transactionId = '1011028-1539357144-1293';
+    this.transactionService.get(client).subscribe(data => {
+      this.clientDetail = data;
+      console.log(data);
+      this.operationLock = true;
+      this.ngxService.stop();
+    });
+  } 
 }

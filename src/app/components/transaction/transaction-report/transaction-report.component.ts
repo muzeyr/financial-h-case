@@ -4,6 +4,8 @@ import { TransactionReport } from 'src/app/models/transaction/transaction-report
 import { NgbDate, NgbCalendar, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { TransactionResponse } from 'src/app/models/transaction/transaction-response';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -14,24 +16,26 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 })
 export class TransactionReportComponent implements OnInit {
   public transactionReport: TransactionReport;
-  public date: { year: number, month: number };
-  public hoveredDate: NgbDate;
-  public fromDate: NgbDate;
-  public toDate: NgbDate;
   public transactionResponse: TransactionResponse;
   public showDateFilter: boolean;
   public isLoadComplate: boolean;
+  public form: FormGroup;
+
 
   @Input() transactionReportProps: TransactionReport;
 
 
   constructor(private readonly transactionService: TransactionService,
               private readonly calendar: NgbCalendar,
+              private readonly formBuilder: FormBuilder,
+              private readonly datePipe: DatePipe,
               private readonly ngxService: NgxUiLoaderService,
               public formatter: NgbDateParserFormatter) {
 
-    this.fromDate = calendar.getToday();
-    this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+    this.form = formBuilder.group({
+      fromDate: [this.datePipe.transform('2018-07-01' , 'yyyy-MM-dd'), [Validators.required]],
+      toDate: [this.datePipe.transform(new Date() , 'yyyy-MM-dd'), [Validators.required]],
+    });
     this.showDateFilter = true;
     this.isLoadComplate = false;
 
@@ -43,59 +47,28 @@ export class TransactionReportComponent implements OnInit {
     } else {
       this.showDateFilter = true;
     }
-    console.log(this.transactionReportProps);
     this.onloadData();
 
   }
   public onloadData(): void {
-
+    console.log('...');
     this.transactionReport = new TransactionReport();
-    this.transactionReport.fromDate = this.fromDate.year + '-'
-      + this.fromDate.month + '-' + this.fromDate.day;
-    this.transactionReport.toDate = this.toDate.year + '-' + this.toDate.month + '-' + this.toDate.day;
-    this.transactionReport.fromDate = '2018-07-01';
-    this.transactionReport.toDate = '2020-10-01';
+    this.transactionReport.fromDate = this.form.value.fromDate;
+    this.transactionReport.toDate = this.form.value.toDate;
     this.ngxService.start();
 
     this.transactionService.report(this.transactionReport).subscribe(data => {
+      this.ngxService.stop();
       this.transactionResponse = data;
       if (this.transactionResponse.response.length > 0) {
         this.isLoadComplate = true;
-        this.ngxService.stop();
 
       }
     }, error => {
       this.ngxService.stop();
     });
   }
-  onDateSelection(date: NgbDate) {
-    if (!this.fromDate && !this.toDate) {
-      this.fromDate = date;
-    } else if (this.fromDate && !this.toDate && date.after(this.fromDate)) {
-      this.toDate = date;
-      this.onloadData();
-    } else {
-      this.toDate = null;
-      this.fromDate = date;
-    }
-  }
 
-  isHovered(date: NgbDate) {
-    return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
-  }
-
-  isInside(date: NgbDate) {
-    return date.after(this.fromDate) && date.before(this.toDate);
-  }
-
-  isRange(date: NgbDate) {
-    return date.equals(this.fromDate) || date.equals(this.toDate) || this.isInside(date) || this.isHovered(date);
-  }
-
-  validateInput(currentValue: NgbDate, input: string): NgbDate {
-    const parsed = this.formatter.parse(input);
-    return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
-  }
   public randomCss(): string {
     return 'success';
   }

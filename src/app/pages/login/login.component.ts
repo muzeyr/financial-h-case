@@ -17,24 +17,23 @@ export class LoginComponent implements OnInit {
       email: ['demo@financialhouse.io', [Validators.required]],
       password: ['cjaiU8CV', [Validators.required]],
     });
-   }
+  }
 
   public ngOnInit(): void {
 
   }
   public login(): void {
-    console.log('....');
     const currentUser = this.authenticationService.currentUserValue;
     if (!currentUser) {
       const user = new UserInfo();
       user.email = this.form.value.email;
       user.password = this.form.value.password;
       this.authenticationService.login(user).subscribe(data => {
-          data.email = user.email;
-          if (data.status === 'APPROVED') {
-            localStorage.setItem('currentUser', JSON.stringify(data));
-            window.location.href = '/dashboard';
-          }
+        data.email = user.email;
+        if (data.status === 'APPROVED') {
+          localStorage.setItem('currentUser', JSON.stringify(data));
+          window.location.href = '/dashboard';
+        }
       });
     }
   }

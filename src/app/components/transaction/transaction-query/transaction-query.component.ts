@@ -15,7 +15,6 @@ import { CustomerInfo } from './../../../models/transaction/transaction-query';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { TransactionDetailComponent } from '../../transaction-detail/transaction-detail.component';
 import { CustomerInfoComponent } from '../../customer-info/customer-info.component';
-
 export class SelectModal {
   public uuid: string;
   public label: string;
@@ -44,7 +43,7 @@ export class TransactionQueryComponent implements OnInit {
       { uuid: 'DECLINED', label: 'DECLINED' },
       { uuid: 'ERROR', label: 'ERROR' }
     ];
-    public operationSelect: SelectModal[] =
+  public operationSelect: SelectModal[] =
     [
       { uuid: 'DIRECT', label: 'DIRECT' },
       { uuid: 'REFUND', label: 'REFUND' },
@@ -52,7 +51,7 @@ export class TransactionQueryComponent implements OnInit {
       { uuid: '3DAUTH', label: '3DAUTH' },
       { uuid: 'STORED', label: 'STORED' }
     ];
-    public paymentMethodSelect: SelectModal[] =
+  public paymentMethodSelect: SelectModal[] =
     [
       { uuid: 'CREDITCARD', label: 'CREDITCARD' },
       { uuid: 'CUP', label: 'CUP' },
@@ -64,7 +63,7 @@ export class TransactionQueryComponent implements OnInit {
       { uuid: 'CEPBANK', label: 'CEPBANK' },
       { uuid: 'CITADEL', label: 'CITADEL' },
     ];
-    public filterSelect: SelectModal[] =
+  public filterSelect: SelectModal[] =
     [
       { uuid: 'Transaction UUID', label: 'Transaction UUID' },
       { uuid: 'Customer Email', label: 'Customer Email' },
@@ -73,7 +72,7 @@ export class TransactionQueryComponent implements OnInit {
       { uuid: 'Card PAN', label: 'Card PAN' }
     ];
 
-    public dataSource = new MatTableDataSource<TransactionDetail>();
+  public dataSource = new MatTableDataSource<TransactionDetail>();
 
 
   constructor(private readonly transactionService: TransactionService,
@@ -141,9 +140,8 @@ export class TransactionQueryComponent implements OnInit {
   public applyFilter(): void {
     console.log('...');
     if (!this.form.valid) {
-     // this.toastr.errorToastr('Please check required field', 'Valitadion error');
-     this.showTable = true;
-     return;
+      this.showTable = true;
+      return;
     }
     this.req = new TransactionRequest();
     this.req.fromDate = this.form.value.fromDate;

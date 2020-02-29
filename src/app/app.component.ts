@@ -3,6 +3,8 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { Menu } from './models/general/menu';
 import { UserInfo } from './models/user/user-info';
 import { AuthenticationService } from './services/general/authentication.service';
+import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +15,8 @@ export class AppComponent implements OnDestroy {
   public title = 'financial-house';
   mobileQuery: MediaQueryList;
   currentUser: UserInfo;
+  public form: FormGroup;
+
 
   fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
   public menus: Menu[] = [
@@ -26,16 +30,25 @@ export class AppComponent implements OnDestroy {
 
   constructor(changeDetectorRef: ChangeDetectorRef,
               media: MediaMatcher,
+              private readonly router: Router,
+              private readonly formBuilder: FormBuilder,
               private authenticationService: AuthenticationService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this.mobileQuerylistener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addEventListener('change', this.mobileQuerylistener);
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 
-
+    this.form = formBuilder.group({
+      transaction: ['', [Validators.required]],
+    });
   }
 
   public ngOnDestroy() {
     this.mobileQuery.removeEventListener('change', this.mobileQuerylistener);
+  }
+  public logout(): void {
+    this.authenticationService.logout();
+    this.router.navigateByUrl('/login');
+
   }
 }
