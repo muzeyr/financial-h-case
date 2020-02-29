@@ -42,5 +42,6 @@ Bootstrap kullanacağım için CSS seçtim. \
     "input": "./node_modules/bootstrap/dist/css/bootstrap.min.css",
     "input": "./node_modules/font-awesome/css/font-awesome.min.css"
 
-    
-    
+    Heroku'da pipeline 'da oluşan hata loglarını takip etmek için; \
+
+    heroku logs -t --app financial-case
