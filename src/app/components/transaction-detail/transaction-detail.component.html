@@ -1,0 +1,181 @@
+<button class="close" mat-button mat-dialog-close>X</button>
+<mat-dialog-content *ngIf="showDiv" class="dialog-w">
+  <form [formGroup]="form" action="" method="">
+
+    <mat-tab-group animationDuration="2000ms">
+      <mat-tab label="Customer Info">
+        <div class="card-body" *ngIf="showDiv">
+          <div class="row">
+              <div class="col-12">
+                  <div class="table-responsive">
+                      <table class="table">
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{transactionDetail.customerInfo.billingTitle}}</th>
+                            <td>
+                              {{transactionDetail.customerInfo.billingFirstName}}
+                              {{transactionDetail.customerInfo.billingLastName}}
+                            </td>
+                            <th scope="row">Expiry</th>
+                            <td>{{transactionDetail.customerInfo.expiryYear}} / {{transactionDetail.customerInfo.expiryMonth}} </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Email</th>
+                          <td>{{transactionDetail.customerInfo.email}}</td>
+                          <th scope="row">Created</th>
+                          <td>{{transactionDetail.customerInfo.created_at}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Birthday</th>
+                          <td>{{transactionDetail.customerInfo.birthday}}</td>
+                          <th scope="row">Updated</th>
+                          <td>{{transactionDetail.customerInfo.updated_at}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Number</th>
+                          <td>{{transactionDetail.customerInfo.number}}</td>
+                          <th scope="row">Deleted</th>
+                          <td>{{transactionDetail.customerInfo.deleted_at}}</td>
+                          </tr>
+                          <tr>
+                          <th scope="row">Gender</th>
+                          <td>{{transactionDetail.customerInfo.gender}}</td>
+                        </tr>
+                      </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Billing Info">
+          <div class="card-body" *ngIf="showDiv">
+              <div class="row">
+                  <div class="col-12">
+                      <div class="table-responsive">
+                          <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row">Name</th>
+                                <td>
+                                    {{transactionDetail.customerInfo.billingTitle}}
+                                    {{transactionDetail.customerInfo.billingFirstName}}
+                                    {{transactionDetail.customerInfo.billingLastName}}
+                                </td>
+                                <th scope="row">Company</th>
+                                <td>{{transactionDetail.customerInfo.billingCompany}} </td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Address</th>
+                              <td>
+                                  {{transactionDetail.customerInfo.billingAddress1}}
+                                  {{transactionDetail.customerInfo.billingAddress2}}
+                                
+                              </td>
+                              <th scope="row">City</th>
+                              <td>
+                                  {{transactionDetail.customerInfo.billingCity}}
+                              </td>
+
+                              
+                            </tr>
+                            <tr>
+                                <th scope="row">Postcode</th>
+                                <td>
+                                    {{transactionDetail.customerInfo.billingPostcode}}
+                                  
+                                </td>
+                                <th scope="row">State</th>
+                                <td>
+                                    {{transactionDetail.customerInfo.billingState}}
+                                  
+                                </td>
+                              </tr>
+                              <tr>
+                                  <th scope="row">Country Code</th>
+                                  <td>
+                                      {{transactionDetail.customerInfo.billingCountry}}
+                                    
+                                  </td>
+                                  <th scope="row">Phone / Fax</th>
+                                  <td>
+                                      {{transactionDetail.customerInfo.billingPhone}}
+                                      {{transactionDetail.customerInfo.billingFax}}
+                                    
+                                  </td>
+                                </tr>
+                          </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </mat-tab>
+      <mat-tab label="Shipping Info">
+          <div class="card-body" *ngIf="showDiv">
+              <div class="row">
+                  <div class="col-12">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <tbody>
+                                  <tr>
+                                      <th scope="row">Name</th>
+                                      <td>
+                                          {{transactionDetail.customerInfo.shippingTitle}}
+                                          {{transactionDetail.customerInfo.shippingFirstName}}
+                                          {{transactionDetail.customerInfo.shippingLastName}}
+                                      </td>
+                                      <th scope="row">Company</th>
+                                      <td>{{transactionDetail.customerInfo.shippingCompany}} </td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">Address</th>
+                                    <td>
+                                        {{transactionDetail.customerInfo.shippingAddress1}}
+                                        {{transactionDetail.customerInfo.shippingAddress2}}
+                                      
+                                    </td>
+                                    <th scope="row">City</th>
+                                    <td>
+                                        {{transactionDetail.customerInfo.shippingCity}}
+                                    </td>
+      
+                                    
+                                  </tr>
+                                  <tr>
+                                      <th scope="row">Postcode</th>
+                                      <td>
+                                          {{transactionDetail.customerInfo.shippingPostcode}}
+                                        
+                                      </td>
+                                      <th scope="row">State</th>
+                                      <td>
+                                          {{transactionDetail.customerInfo.shippingState}}
+                                        
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Country Code</th>
+                                        <td>
+                                            {{transactionDetail.customerInfo.shippingCountry}}
+                                          
+                                        </td>
+                                        <th scope="row">Phone / Fax</th>
+                                        <td>
+                                            {{transactionDetail.customerInfo.shippingPhone}}
+                                            {{transactionDetail.customerInfo.shippingFax}}
+                                          
+                                        </td>
+                                      </tr>
+                                </tbody>
+                          </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+
+      </mat-tab>
+    </mat-tab-group>
+  </form>
+</mat-dialog-content>
