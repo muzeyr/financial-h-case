@@ -1,51 +1,11 @@
-<div class="container shadow-lg">
+<div class="shadow-lg">
   <form [formGroup]="form" class="form-horizontal">
-    <div class="row">
-      <div class="col-md-3">
-        <mat-form-field>
-          <input matInput [matDatepicker]="fromDate" formControlName="fromDate" placeholder="From Date"
-            (click)="fromDate.open()">
-          <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
-          <mat-datepicker #fromDate></mat-datepicker>
-        </mat-form-field>
-      </div>
-      <div class="col-md-3">
-        <mat-form-field>
-          <input matInput [matDatepicker]="toDate" formControlName="toDate" placeholder="To Date"
-            (click)="toDate.open()">
-          <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
-          <mat-datepicker #toDate></mat-datepicker>
-        </mat-form-field>
-      </div>
-      <div class="col-md-2">
-        <mat-form-field class="example-full-width">
-          <mat-select placeholder="Status" formControlName="status">
-            <mat-option *ngFor="let item of statusSelect" [value]="item.uuid">
-              {{ item.label }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
 
-      <div class="col-md-2">
-        <button mat-raised-button type="button" (click)="applyFilter()" class="btn btn-rose btn-fill">
-          <i class="material-icons">
-            search
-          </i>
-
-        </button>
-      </div>
-    </div>
     <div class="row" *ngIf="showTable">
-      <div class="col-md-10">
-        <mat-paginator [length]="totalElement" [pageSize]="pageSize" [pageSizeOptions]="[50, 100, 150, 200]"
-          (page)="serverdata($event)">
-        </mat-paginator>
-
+      <div class="col-md-9">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="showTable">
           <ng-container matColumnDef="name">
             <mat-header-cell style="min-width:20%!important;max-width: 20%!important;" *matHeaderCellDef>
-              Name
             </mat-header-cell>
             <mat-cell *matCellDef="let item">
               <button mat-button (click)="openDialog(item.customerInfo)">
@@ -53,10 +13,11 @@
                 {{item.customerInfo ? item.customerInfo.billingLastName: ''}}
               </button>
             </mat-cell>
+            <mat-footer-cell *matFooterCellDef></mat-footer-cell>
           </ng-container>
           <ng-container matColumnDef="status">
             <mat-header-cell *matHeaderCellDef style="min-width:20%!important;max-width: 20%!important;">
-              Status
+
             </mat-header-cell>
             <mat-cell *matCellDef="let item">
               <div class="row">
@@ -70,26 +31,104 @@
               </div>
 
             </mat-cell>
+            <mat-footer-cell *matFooterCellDef></mat-footer-cell>
           </ng-container>
           <ng-container matColumnDef="transaction">
-            <mat-header-cell style="min-width:20%!important;max-width: 20%!important;" *matHeaderCellDef>
-              <div class="col-sm-12">
-                Transaction
-              </div>
+            <mat-header-cell *matHeaderCellDef>
+              <mat-paginator [length]="totalElement" [pageSize]="pageSize" [pageSizeOptions]="[50, 100, 150, 200]"
+                (page)="serverdata($event)">
+              </mat-paginator>
+
             </mat-header-cell>
             <mat-cell *matCellDef="let item">
               <button mat-button (click)="openDialogTransaction(item.transaction.merchant)">
                 Transaction Detail
               </button>
             </mat-cell>
+            <mat-footer-cell *matFooterCellDef>
+              <mat-paginator [length]="totalElement" [pageSize]="pageSize" [pageSizeOptions]="[50, 100, 150, 200]"
+                (page)="serverdata($event)">
+              </mat-paginator>
+
+            </mat-footer-cell>
+
           </ng-container>
           <mat-header-row mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
           <mat-row [class]="setStyle(i,row.transaction.merchant)" mat-row
             *matRowDef="let i= index;let row; columns: displayedColumns;"></mat-row>
+          <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
         </table>
-        <mat-paginator [length]="totalElement" [pageSize]="pageSize" [pageSizeOptions]="[50, 100, 150, 200]"
-          (page)="serverdata($event)">
-        </mat-paginator>
+
+      </div>
+
+      <div class="col-md-2">
+        <mat-card class="my-card">
+          <mat-card-content>
+            <form [formGroup]="form" class="form-horizontal">
+
+              <mat-form-field>
+                <input matInput [matDatepicker]="fromDate" formControlName="fromDate" placeholder="From Date"
+                  (click)="fromDate.open()">
+                <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
+                <mat-datepicker #fromDate></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput [matDatepicker]="toDate" formControlName="toDate" placeholder="To Date"
+                  (click)="toDate.open()">
+                <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
+                <mat-datepicker #toDate></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field class="full-width">
+                <mat-select placeholder="Status" formControlName="status">
+                  <mat-option>Select</mat-option>
+                  <mat-option *ngFor="let item of statusSelect" [value]="item.uuid">
+                    {{ item.label }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <mat-select placeholder="Operation" formControlName="operation">
+                    <mat-option>Select</mat-option>
+                  <mat-option *ngFor="let item of operationSelect" [value]="item.uuid">
+                    {{ item.label }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                  <mat-select placeholder="Payment Method" formControlName="paymentMethod">
+                      <mat-option>Select</mat-option>
+                      <mat-option *ngFor="let item of paymentMethodSelect" [value]="item.uuid">
+                      {{ item.label }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <mat-select placeholder="Filter Field" formControlName="filterField">
+                        <mat-option>Select</mat-option>
+                      <mat-option *ngFor="let item of filterSelect" [value]="item.uuid">
+                        {{ item.label }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                <mat-form-field>
+                    <input matInput  formControlName="filterValue" placeholder="Filter Value"
+                      >
+                  </mat-form-field>
+    
+            </form>
+          </mat-card-content>
+          <mat-card-actions>
+
+            <button mat-raised-button type="button" (click)="applyFilter()" class="full-width" color="primary">
+              <i class="material-icons">
+                search
+              </i>
+
+            </button>
+          </mat-card-actions>
+        </mat-card>
       </div>
 
     </div>

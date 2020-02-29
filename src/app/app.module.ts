@@ -8,7 +8,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NavComponent } from './components/nav/nav.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { TransactionReportComponent } from './components/transaction/transaction-report/transaction-report.component';
-
+import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './moduls/helps/jwt.interceptor';
 import { ErrorInterceptor } from './moduls/helps/error.interceptor';
@@ -56,7 +56,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { NgxUiLoaderModule, NgxUiLoaderConfig, POSITION, SPINNER, PB_DIRECTION } from 'ngx-ui-loader';
 import { TransactionDetailComponent } from './components/transaction-detail/transaction-detail.component';
 import { CustomerInfoComponent } from './components/customer-info/customer-info.component';
@@ -122,7 +121,8 @@ const materials = [
     TransactionDetailComponent
   ],
   imports: [
-  BrowserModule,
+    BrowserModule,
+    CommonModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
@@ -132,7 +132,6 @@ const materials = [
     FormsModule,
     ReactiveFormsModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
-  //  ToastrModule.forRoot(),
   ],
   exports: [
     materials
