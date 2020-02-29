@@ -47,4 +47,4 @@ Bootstrap kullanacağım için CSS seçtim. \
     heroku logs -t --app financial-case
 
 
-    ![](muzeyr.gif)
+    ![Demo Page](/muzeyr.gif)
