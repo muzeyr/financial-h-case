@@ -51,9 +51,9 @@ export class Merchant {
 }
 export class CustomerInfo {
     public id: number;
-    public created_at: string;
-    public updated_at: string;
-    public deleted_at: string;
+    public createdat: string;
+    public updatedat: string;
+    public deletedat: string;
     public number: string;
     public expiryMonth: string;
     public expiryYear: string;

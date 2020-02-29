@@ -14,9 +14,9 @@ export class TransactionComponent implements OnInit {
   public clientDetail: TransactionDetail;
   constructor(private readonly formBuilder: FormBuilder,
               private readonly transactionService: TransactionService) {
-                this.form = formBuilder.group({
-                  transaction: ['', [Validators.required]],
-                });
+      this.form = formBuilder.group({
+        transaction: ['', [Validators.required]],
+      });
     }
 
   public ngOnInit(): void {

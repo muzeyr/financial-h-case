@@ -18,15 +18,16 @@ export class AppComponent {
     {title: 'Transaction' , url: 'transaction', icon: 'dns'},
     {title: 'Logout' , url: 'logout', icon: 'power_settings_new'},
   ];
-  private _mobileQueryListener: () => void;
+  private mobileQuerylistener: () => void;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
+    this.mobileQuerylistener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addEventListener('change', this.mobileQuerylistener);
+
   }
 
   public ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
+    this.mobileQuery.removeEventListener('change', this.mobileQuerylistener);
   }
 }
