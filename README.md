@@ -44,7 +44,7 @@ Bootstrap kullanacağım için CSS seçtim. \
 
     Heroku'da pipeline 'da oluşan hata loglarını takip etmek için; \
 
-    heroku logs -t --app financial-case
+    heroku logs -t --app financial-case \
 
 
     ![Demo Page](/muzeyr.gif)
