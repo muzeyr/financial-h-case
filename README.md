@@ -1,3 +1,10 @@
+
+
+![Demo Page Gif Uzeyr OZCAN](MUZEYR_1.gif)
+![Demo Page Gif Uzeyr OZCAN](MUZEYR_2.gif)
+![Demo Page Gif Uzeyr OZCAN](MUZEYR_3.gif)
+
+
 # financial-house
 Financial House Case Study
 
@@ -45,8 +52,3 @@ Bootstrap kullanacağım için CSS seçtim. \
     Heroku'da pipeline 'da oluşan hata loglarını takip etmek için; \
 
     heroku logs -t --app financial-case \
-
-
-![Demo Page Gif Uzeyr OZCAN](MUZEYR_1.gif)
-![Demo Page Gif Uzeyr OZCAN](MUZEYR_2.gif)
-![Demo Page Gif Uzeyr OZCAN](MUZEYR_3.gif)
