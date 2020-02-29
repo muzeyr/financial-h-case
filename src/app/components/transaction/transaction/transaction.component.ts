@@ -22,14 +22,15 @@ export class TransactionComponent implements OnInit {
   public ngOnInit(): void {
   }
   public applyFilter(): void {
-
-    if (!this.form.valid) {
+    if (this.form.valid) {
      // this.toastr.errorToastr('Please check required field', 'Valitadion error');
     } else {
+      console.log('..');
       const client = new TransactionClient();
-      client.transactionId = this.form.value.transaction;
+      client.transactionId = '1011028-1539357144-1293';
       this.transactionService.get(client).subscribe(data => {
         this.clientDetail = data;
+        console.log(data);
       });
 
     }

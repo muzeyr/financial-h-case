@@ -105,7 +105,8 @@ export class TransactionQueryComponent implements OnInit {
     });
   }
   public applyFilter(): void {
-    if (!this.form.valid) {
+    console.log('...');
+    if (this.form.valid) {
      // this.toastr.errorToastr('Please check required field', 'Valitadion error');
       return;
     }
