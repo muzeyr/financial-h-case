@@ -23,6 +23,7 @@ import { TransferFormComponent } from './transfer/transfer-form/transfer-form.co
 import { TransferListComponent } from './transfer/transfer-list/transfer-list.component';
 import { StockListComponent } from './stock-list/stock-list.component';
 import { SupplierModalComponent } from './suppliers/supplier-modal/supplier-modal.component';
+import { TransactionComponent } from './transaction.component';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { SupplierModalComponent } from './suppliers/supplier-modal/supplier-moda
           SupplierListComponent, FieldErrorWarehouseComponent,
           SupplierFormComponent, ItemsListComponent, SupplierModalComponent,
           ItemFormComponent, PurchasePdfComponent, RequestComponent,
-          TransferFormComponent, TransferListComponent, StockListComponent],
+          TransferFormComponent, TransferListComponent, StockListComponent, TransactionComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(WarehouseRoutes),

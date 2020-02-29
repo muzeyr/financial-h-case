@@ -1,14 +1,31 @@
 <ngx-ui-loader></ngx-ui-loader>
-<div >
-        <app-nav></app-nav>
-        <div class="row">
-                <div class="col-md-2">
-                    <app-menu></app-menu>
+
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="primary" class="example-toolbar">
+        <button mat-icon-button (click)="snav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <h1 class="example-app-name">Financial House</h1>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        
+        <mat-sidenav #snav opened="true" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+            fixedTopGap="56">
+            <mat-nav-list>
+                <a mat-list-item
+                    routerLinkActive
+                    routerLink="{{menu.url}}" *ngFor="let menu of menus">
+                        <i class="material-icons">{{menu.icon}}</i>
+                        {{menu.title}}
+                </a>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <router-outlet></router-outlet>
                 </div>
-                <div class="col-md-10">
-                    <router-outlet></router-outlet>     
-   
-                </div>
-            
-            </div> 
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 </div>

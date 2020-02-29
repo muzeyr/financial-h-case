@@ -12,9 +12,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CustomerInfo } from './../../../models/transaction/transaction-query';
-import { TransactionDetailComponent } from './../../../modules/transaction-detail/transaction-detail.component';
-import { CustomerInfoComponent } from 'src/app/modules/customer-info/customer-info.component';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { TransactionDetailComponent } from '../../transaction-detail/transaction-detail.component';
+import { CustomerInfoComponent } from '../../customer-info/customer-info.component';
 
 export class SelectModal {
   public uuid: string;
@@ -50,9 +50,9 @@ export class TransactionQueryComponent implements OnInit {
   constructor(private readonly transactionService: TransactionService,
               private readonly calendar: NgbCalendar,
               private readonly datePipe: DatePipe,
-              public dialog: MatDialog,
               private readonly ngxService: NgxUiLoaderService,
               private readonly formBuilder: FormBuilder,
+              public dialog: MatDialog,
               public formatter: NgbDateParserFormatter) {
     this.showTable = false;
     const firtDate = new Date();
@@ -105,6 +105,10 @@ export class TransactionQueryComponent implements OnInit {
     });
   }
   public applyFilter(): void {
+    if (!this.form.valid) {
+     // this.toastr.errorToastr('Please check required field', 'Valitadion error');
+      return;
+    }
     this.req = new TransactionRequest();
     this.req.fromDate = this.form.value.fromDate;
     this.req.toDate = this.form.value.toDate;

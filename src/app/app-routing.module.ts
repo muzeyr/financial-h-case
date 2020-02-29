@@ -5,6 +5,7 @@ import { TransactionReportComponent } from './components/transaction/transaction
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TransactionQueryComponent } from './components/transaction/transaction-query/transaction-query.component';
 import { LogutComponent } from './components/logut/logut.component';
+import { TransactionComponent } from './components/transaction/transaction/transaction.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' , pathMatch: 'full' },
@@ -13,11 +14,7 @@ const routes: Routes = [
   { path: 'logout', component: LogutComponent},
   { path: 'transaction-query', component: TransactionQueryComponent},
   { path: 'transaction-report', component: TransactionReportComponent},
-  {path: '', component: LoginComponent, children: [{
-                                          path: 'pages',
-                                          loadChildren: './pages/pages.module#PagesModule'
-                                        }]
-  }
+  { path: 'transaction', component: TransactionComponent}
 ];
 
 @NgModule({

@@ -9,8 +9,6 @@ import { CustomerInfo, TransactionQuery, TransactionDetail } from './../../model
 import { Injectable } from '@angular/core';
 import { TransactionRequest } from './../../models/transaction/transaction-request';
 
-
-
 @Injectable({
     providedIn: 'root'
 })

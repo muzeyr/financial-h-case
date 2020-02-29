@@ -10,8 +10,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { TransactionReportComponent } from './components/transaction/transaction-report/transaction-report.component';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { JwtInterceptor } from './services/moduls/helps/jwt.interceptor';
-import { ErrorInterceptor } from './services/moduls/helps/error.interceptor';
+import { JwtInterceptor } from './moduls/helps/jwt.interceptor';
+import { ErrorInterceptor } from './moduls/helps/error.interceptor';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TransactionQueryComponent } from './components/transaction/transaction-query/transaction-query.component';
@@ -56,11 +56,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TransactionDetailComponent } from './modules/transaction-detail/transaction-detail.component';
-import { CustomerInfoComponent } from './modules/customer-info/customer-info.component';
+
 import { NgxUiLoaderModule, NgxUiLoaderConfig, POSITION, SPINNER, PB_DIRECTION } from 'ngx-ui-loader';
-
-
+import { TransactionDetailComponent } from './components/transaction-detail/transaction-detail.component';
+import { CustomerInfoComponent } from './components/customer-info/customer-info.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -133,6 +132,7 @@ const materials = [
     FormsModule,
     ReactiveFormsModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+  //  ToastrModule.forRoot(),
   ],
   exports: [
     materials

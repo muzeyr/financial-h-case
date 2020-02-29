@@ -1,4 +1,4 @@
-<div>
+<div class="container shadow-lg"  >
   <form [formGroup]="form" class="form-horizontal">
     <div class="row">
       <div class="col-md-3">
@@ -32,60 +32,60 @@
       </div>
     </div>
     <div class="row" *ngIf="showTable">
-        <mat-paginator [length]="totalElement" [pageSize]="pageSize" [pageSizeOptions]="[50, 100, 150, 200]"
-        (page)="serverdata($event)">
-      </mat-paginator>
-
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="showTable">
-        <ng-container matColumnDef="name">
-          <mat-header-cell style="min-width:20%!important;max-width: 20%!important;" *matHeaderCellDef>
-              Name
-          </mat-header-cell>
-          <mat-cell *matCellDef="let item">
-            <button mat-button (click)="openDialog(item.customerInfo)">
-              {{item.customerInfo ? item.customerInfo.billingFirstName: ''}}
-              {{item.customerInfo ? item.customerInfo.billingLastName: ''}}
-            </button>
-          </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="status">
-          <mat-header-cell *matHeaderCellDef style="min-width:20%!important;max-width: 20%!important;">
-              Status
-          </mat-header-cell>
-          <mat-cell *matCellDef="let item">
-            <div class="row">
-              <div class="col-sm-12">
-                Status:{{item.transaction.merchant.message}}
-              </div>
-              <div class="col-sm-12">
-                Created :{{item.created_at}}
-              </div>
-
-            </div>
-
-          </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="transaction">
-            <mat-header-cell style="min-width:20%!important;max-width: 20%!important;" *matHeaderCellDef>
-              <div class="col-sm-12">
-                Transaction
-              </div>
-            </mat-header-cell>
-            <mat-cell *matCellDef="let item">
-              <button mat-button (click)="openDialogTransaction(item.transaction.merchant)">
-               Transaction Detail
-              </button>
-            </mat-cell>
-          </ng-container>
-
-
-        <mat-header-row mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row [class]="setStyle(i,row.transaction.merchant)" mat-row
-          *matRowDef="let i= index;let row; columns: displayedColumns;"></mat-row>
-      </table>
-      <mat-paginator [length]="totalElement" [pageSize]="pageSize" [pageSizeOptions]="[50, 100, 150, 200]"
-        (page)="serverdata($event)">
-      </mat-paginator>
+        <div class="col-md-10">
+            <mat-paginator [length]="totalElement" [pageSize]="pageSize" [pageSizeOptions]="[50, 100, 150, 200]"
+            (page)="serverdata($event)">
+          </mat-paginator>
+    
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="showTable">
+            <ng-container matColumnDef="name">
+              <mat-header-cell style="min-width:20%!important;max-width: 20%!important;" *matHeaderCellDef>
+                  Name
+              </mat-header-cell>
+              <mat-cell *matCellDef="let item">
+                <button mat-button (click)="openDialog(item.customerInfo)">
+                  {{item.customerInfo ? item.customerInfo.billingFirstName: ''}}
+                  {{item.customerInfo ? item.customerInfo.billingLastName: ''}}
+                </button>
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="status">
+              <mat-header-cell *matHeaderCellDef style="min-width:20%!important;max-width: 20%!important;">
+                  Status
+              </mat-header-cell>
+              <mat-cell *matCellDef="let item">
+                <div class="row">
+                  <div class="col-sm-12">
+                    Status:{{item.transaction.merchant.message}}
+                  </div>
+                  <div class="col-sm-12">
+                    Created :{{item.created_at}}
+                  </div>
+    
+                </div>
+    
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="transaction">
+                <mat-header-cell style="min-width:20%!important;max-width: 20%!important;" *matHeaderCellDef>
+                  <div class="col-sm-12">
+                    Transaction
+                  </div>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let item">
+                  <button mat-button (click)="openDialogTransaction(item.transaction.merchant)">
+                    Transaction Detail
+                  </button>
+                </mat-cell>
+              </ng-container>
+            <mat-header-row mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row [class]="setStyle(i,row.transaction.merchant)" mat-row
+              *matRowDef="let i= index;let row; columns: displayedColumns;"></mat-row>
+          </table>
+          <mat-paginator [length]="totalElement" [pageSize]="pageSize" [pageSizeOptions]="[50, 100, 150, 200]"
+            (page)="serverdata($event)">
+          </mat-paginator>
+        </div>
 
     </div>
   </form>
