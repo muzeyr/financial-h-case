@@ -39,10 +39,8 @@ Bootstrap kullanacağım için CSS seçtim. \
     @import "~font-awesome/css/font-awesome.min.css"
 
     Diğer alternatif angular.json dosyasında içinde styles dizinine bu css eklenebilir. \
+    "input": "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+    "input": "./node_modules/font-awesome/css/font-awesome.min.css"
+
     
-    {
-        "input": "./node_modules/bootstrap/dist/css/bootstrap.min.css"
-    },
-    {
-        "input": "./node_modules/font-awesome/css/font-awesome.min.css"
-    }
+    
