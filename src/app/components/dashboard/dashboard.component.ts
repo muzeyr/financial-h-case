@@ -19,20 +19,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log('...');
-    const currentUser = this.authenticationService.currentUserValue;
-    if (!currentUser) {
-      const user = new UserInfo();
-      user.email = 'demo@financialhouse.io';
-      user.password = 'cjaiU8CV';
-      this.authenticationService.login(user).subscribe(data => {
-          data.email = user.email;
-          if (data.status === 'APPROVED') {
-            localStorage.setItem('currentUser', JSON.stringify(data));
-            window.location.href = '/dashboard';
-          }
-      });
-    }
   }
 
 }

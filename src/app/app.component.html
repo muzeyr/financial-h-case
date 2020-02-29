@@ -1,6 +1,6 @@
 <ngx-ui-loader></ngx-ui-loader>
 
-<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="currentUser">
     <mat-toolbar color="primary" class="example-toolbar">
         <button mat-icon-button (click)="snav.toggle()">
             <mat-icon>menu</mat-icon>
@@ -28,4 +28,7 @@
                 </div>
         </mat-sidenav-content>
     </mat-sidenav-container>
+</div>
+<div *ngIf="!currentUser">
+        <router-outlet></router-outlet>
 </div>

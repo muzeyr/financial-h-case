@@ -28,6 +28,7 @@ export class MerchantTransaction {
     public message: string;
     public transactionId: string;
     public agent: Agent;
+    public merchant: Merchant;
 
 }
 
@@ -36,6 +37,7 @@ export class Agent {
     public customerIp: string;
     public customerUserAgent: string;
     public merchantIp: string;
+    public merchantUserAgent: string;
 }
 
 export class MerchantMain {
@@ -46,8 +48,16 @@ export class Fx {
     public merchant: Merchant;
 }
 export class Merchant {
+    public agent: Agent;
     public originalAmount: number;
     public originalCurrency: string;
+    public message: string;
+    public merchantId: string;
+    public fxTransactionId: string;
+    public acquirerTransactionId: string;
+    public channel: string;
+    public type: string;
+    public operation: string;
 }
 export class CustomerInfo {
     public id: number;
