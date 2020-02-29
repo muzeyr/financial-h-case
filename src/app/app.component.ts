@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Menu } from './models/general/menu';
 
@@ -7,7 +7,7 @@ import { Menu } from './models/general/menu';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   public title = 'financial-house';
   mobileQuery: MediaQueryList;
   fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
@@ -27,7 +27,7 @@ export class AppComponent {
 
   }
 
-  public ngOnDestroy(): void {
+  public ngOnDestroy() {
     this.mobileQuery.removeEventListener('change', this.mobileQuerylistener);
   }
 }

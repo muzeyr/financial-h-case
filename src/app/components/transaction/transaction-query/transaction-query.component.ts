@@ -63,7 +63,7 @@ export class TransactionQueryComponent implements OnInit {
       toDate: [this.datePipe.transform(new Date(), 'yyyy-MM-dd'), [Validators.required]],
       status: ['', [Validators.required]],
       transaction: ['', [Validators.required]],
-      name: ['', [Validators.required]],
+      name: [''],
     });
 
   }
