@@ -4,6 +4,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { AuthenticationService } from 'src/app/services/general/authentication.service';
 import { UserInfo } from 'src/app/models/user/user-info';
 import { Router } from '@angular/router';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-nav',
@@ -20,6 +21,7 @@ export class NavComponent implements OnInit, OnDestroy {
   ];
   public currentUser: UserInfo;
   public mobileQuery: MediaQueryList;
+ 
   private mobileQuerylistener: () => void;
   @ViewChild('search')public  search: ElementRef;
 

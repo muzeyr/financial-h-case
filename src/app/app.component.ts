@@ -15,6 +15,7 @@ export class AppComponent implements OnDestroy {
   public title = 'financial-house';
   mobileQuery: MediaQueryList;
   currentUser: UserInfo;
+  public form: FormGroup;
 
   private mobileQuerylistener: () => void;
 

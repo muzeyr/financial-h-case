@@ -17,6 +17,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { TransactionDetailComponent } from '../../transaction-detail/transaction-detail.component';
 import { CustomerInfoComponent } from '../../customer-info/customer-info.component';
 import { Router } from '@angular/router';
+import { ToastrManager } from 'ng6-toastr-notifications';
 export class SelectModal {
   public uuid: string;
   public label: string;
@@ -81,6 +82,7 @@ export class TransactionQueryComponent implements OnInit {
               private readonly calendar: NgbCalendar,
               private readonly datePipe: DatePipe,
               private readonly ngxService: NgxUiLoaderService,
+              public toastr: ToastrManager,
               private readonly formBuilder: FormBuilder,
               public dialog: MatDialog,
               private readonly router: Router,
@@ -141,7 +143,6 @@ export class TransactionQueryComponent implements OnInit {
     });
   }
   public applyFilter(): void {
-    console.log('...');
     if (!this.form.valid) {
       this.showTable = true;
       return;
@@ -159,9 +160,10 @@ export class TransactionQueryComponent implements OnInit {
     this.transactionService.list(this.req).subscribe(data => {
       this.response = data;
       this.dataSource.data = this.response.data;
-      console.log(this.response);
       if (this.response.data.length > 0) {
         this.showTable = true;
+      } else {
+        this.toastr.warningToastr('No Records Found', 'No Data');
       }
       this.ngxService.stop();
 

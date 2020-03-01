@@ -4,6 +4,7 @@ import { AuthenticationService } from 'src/app/services/general/authentication.s
 import { userInfo } from 'os';
 import { UserInfo } from 'src/app/models/user/user-info';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
   public form: FormGroup;
   constructor(private readonly formBuilder: FormBuilder,
               public toastr: ToastrManager,
+              private readonly router: Router,
               private readonly authenticationService: AuthenticationService) {
     this.form = formBuilder.group({
       email: ['demo@financialhouse.io', [Validators.required]],
@@ -33,14 +35,14 @@ export class LoginComponent implements OnInit {
       this.authenticationService.login(user).subscribe(data => {
         data.email = user.email;
         if (data.status === 'APPROVED') {
-          this.toastr.successToastr('', 'Success!');
+          this.toastr.successToastr('Login successful', 'Success!');
           localStorage.setItem('currentUser', JSON.stringify(data));
           window.location.href = '/dashboard';
         } else {
-          this.toastr.errorToastr('Please check ', 'Error!');
+          this.toastr.errorToastr('Please check your email or password ', 'Error!');
         }
       }, error => {
-        this.toastr.warningToastr('Something is wrong ', 'Error!');
+        this.toastr.warningToastr(error.message);
       });
     }
   }

@@ -1,3 +1,4 @@
+
 <mat-toolbar style="background:#a02429!important;color: white" class="example-toolbar">
   <button mat-icon-button (click)="snav.toggle()">
     <mat-icon>menu</mat-icon>
@@ -7,19 +8,13 @@
   <span class="example-spacer"></span>
   <span flex></span>
   <div>
-
-
     <mat-form-field style="width: 300px!important;">
       <input matInput (keydown)="onKeydown($event)" #search formControlName="transaction" placeholder="Transaction ID...">
     </mat-form-field>
-
     <mat-icon style="font-size: 25px" (click)="logout()">power_settings_new</mat-icon>
-
-
   </div>
 </mat-toolbar>
 <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-
   <mat-sidenav #snav opened="true" [mode]="mobileQuery.matches ? 'over' : 'side'"
     [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
     <mat-nav-list>

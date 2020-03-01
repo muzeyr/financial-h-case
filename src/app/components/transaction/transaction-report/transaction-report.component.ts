@@ -6,6 +6,7 @@ import { TransactionResponse } from 'src/app/models/transaction/transaction-resp
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 
 
@@ -26,14 +27,14 @@ export class TransactionReportComponent implements OnInit {
 
 
   constructor(private readonly transactionService: TransactionService,
-              private readonly calendar: NgbCalendar,
               private readonly formBuilder: FormBuilder,
               private readonly datePipe: DatePipe,
+              public toastr: ToastrManager,
               private readonly ngxService: NgxUiLoaderService,
               public formatter: NgbDateParserFormatter) {
 
     this.form = formBuilder.group({
-      fromDate: [this.datePipe.transform('2018-07-01' , 'yyyy-MM-dd'), [Validators.required]],
+      fromDate: [this.datePipe.transform('2008-01-01' , 'yyyy-MM-dd'), [Validators.required]],
       toDate: [this.datePipe.transform(new Date() , 'yyyy-MM-dd'), [Validators.required]],
     });
     this.showDateFilter = true;
@@ -51,7 +52,6 @@ export class TransactionReportComponent implements OnInit {
 
   }
   public onloadData(): void {
-    console.log('...');
     this.transactionReport = new TransactionReport();
     this.transactionReport.fromDate = this.form.value.fromDate;
     this.transactionReport.toDate = this.form.value.toDate;
@@ -62,6 +62,8 @@ export class TransactionReportComponent implements OnInit {
       this.transactionResponse = data;
       if (this.transactionResponse.response.length > 0) {
         this.isLoadComplate = true;
+      } else {
+        this.toastr.warningToastr('No Records Found', 'No Data');
 
       }
     }, error => {
