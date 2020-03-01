@@ -20,6 +20,15 @@ export class JwtInterceptor implements HttpInterceptor {
                         Authorization: `${currentUser.token}`
                     }
                 });
+            } else {
+                request = request.clone({
+                    setHeaders: {
+                        Accept : '*',
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+                    }
+                });
+
             }
         }
 
