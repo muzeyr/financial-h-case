@@ -2,17 +2,9 @@ const express = require('express');
 const path = require('path');
 const app = express();
 var cors = require('cors');
-const forceSSL = function() {
-  return function (req, res, next) {
-    if (req.headers['x-forwarded-proto'] !== 'https') {
-      return res.redirect(
-       ['https://', req.get('Host'), req.url].join('')
-      );
-    }
-    next();
-  }
-}
-
+var sslRedirect = require('heroku-ssl-redirect');
+const app = express();
+app.use(sslRedirect());
 var corsOptions = {
     origin: 'https://sandbox-reporting.rpdpymnt.com',
     optionsSuccessStatus: 200
