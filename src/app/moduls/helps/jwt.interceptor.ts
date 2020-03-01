@@ -22,7 +22,7 @@ export class JwtInterceptor implements HttpInterceptor {
                 });
             }
         } else {
-            console.log('Access....');
+            console.log('Access2....');
             request = request.clone({
                 setHeaders: {
                     Accept : '*',
