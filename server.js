@@ -13,7 +13,12 @@ app.use(express.static(__dirname + '/dist/financial-case'));
 
 
 app.get('/*',cors(corsOptions), function(req,res) {
-    
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+
 res.sendFile(path.join(__dirname+'/dist/financial-case/index.html'));
 });
 app.listen(process.env.PORT || 8080);
