@@ -17,7 +17,6 @@ var corsOptions = {
     origin: 'https://sandbox-reporting.rpdpymnt.com',
     optionsSuccessStatus: 200
   }
-app.use(forceSSL);
 app.use(express.static(__dirname + '/dist/financial-case'));
 
 app.get('/*',cors(corsOptions), function(req,res) {
