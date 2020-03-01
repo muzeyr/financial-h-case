@@ -9,7 +9,6 @@ export class JwtInterceptor implements HttpInterceptor {
     constructor(private readonly authenticationService: AuthenticationService) {}
 
     public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log('JWT....');
         const currentUser = this.authenticationService.currentUserValue;
         if (currentUser && currentUser.token) {
             if (currentUser !== null) {
@@ -21,18 +20,19 @@ export class JwtInterceptor implements HttpInterceptor {
                         Authorization: `${currentUser.token}`
                     }
                 });
-            } else {
-                console.log('Access....');
-                request = request.clone({
-                    setHeaders: {
-                        Accept : '*',
-                        'Access-Control-Allow-Origin': '*',
-                        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
-                    }
-                });
-
             }
+        } else {
+            console.log('Access....');
+            request = request.clone({
+                setHeaders: {
+                    Accept : '*',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+                }
+            });
+
         }
+
 
         return next.handle(request);
     }
