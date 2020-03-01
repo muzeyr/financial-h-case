@@ -15,7 +15,6 @@ export class AppComponent implements OnDestroy {
   public title = 'financial-house';
   mobileQuery: MediaQueryList;
   currentUser: UserInfo;
-  public form: FormGroup;
 
   private mobileQuerylistener: () => void;
 
@@ -29,9 +28,6 @@ export class AppComponent implements OnDestroy {
     this.mobileQuery.addEventListener('change', this.mobileQuerylistener);
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 
-    this.form = formBuilder.group({
-      transaction: ['', [Validators.required]],
-    });
   }
 
   public ngOnDestroy() {

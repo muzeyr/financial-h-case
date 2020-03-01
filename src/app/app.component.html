@@ -1,12 +1,8 @@
 <ngx-ui-loader></ngx-ui-loader>
-<form [formGroup]="form">
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="currentUser">
-   
-<app-nav>
-
-</app-nav>
+    <app-nav>
+    </app-nav>
 </div>
-</form>
 <div *ngIf="!currentUser" class="fh-login">
     <router-outlet></router-outlet>
 </div>

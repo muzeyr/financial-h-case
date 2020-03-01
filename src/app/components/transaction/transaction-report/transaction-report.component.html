@@ -1,6 +1,10 @@
 <div class="shadow-lg">
   <form [formGroup]="form" class="form-horizontal">
-
+    <div class="row" *ngIf="showDateFilter">
+        <div class="col-md-12">
+          <hr/>
+        </div>
+    </div>
     <div class="row" *ngIf="showDateFilter">
         <div class="col-md-3">
 
