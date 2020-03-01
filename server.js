@@ -11,14 +11,14 @@ var corsOptions = {
   }
 app.use(express.static(__dirname + '/dist/financial-case'));
 
+console.log('Server is running...');
+app.get('/*',cors(corsOptions), function(req,res,next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
 
-app.get('/*',cors(corsOptions), function(req,res) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-
-res.sendFile(path.join(__dirname+'/dist/financial-case/index.html'));
+  res.sendFile(path.join(__dirname+'/dist/financial-case/index.html'));
+  next();
 });
 app.listen(process.env.PORT || 8080);
