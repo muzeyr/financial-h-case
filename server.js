@@ -4,10 +4,13 @@ const app = express();
 var cors = require('cors');
 var forceSsl = require('force-ssl-heroku');
 var corsOptions = {
-    origin: 'https://sandbox-reporting.rpdpymnt.com',
-    optionsSuccessStatus: 200
+    "origin": "*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
+    "optionsSuccessStatus": 204
   }
 app.use(express.static(__dirname + '/dist/financial-case'));
+
 
 app.get('/*',cors(corsOptions), function(req,res) {
     
