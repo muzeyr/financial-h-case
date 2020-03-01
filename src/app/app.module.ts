@@ -130,7 +130,7 @@ const materials = [
     materials,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
   ],
   exports: [
