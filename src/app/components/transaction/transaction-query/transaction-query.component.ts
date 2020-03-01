@@ -14,10 +14,10 @@ import { DatePipe } from '@angular/common';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CustomerInfo } from './../../../models/transaction/transaction-query';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { TransactionDetailComponent } from '../../transaction-detail/transaction-detail.component';
 import { CustomerInfoComponent } from '../../customer-info/customer-info.component';
 import { Router } from '@angular/router';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import { TransactionDetailComponent } from '../transaction-detail/transaction-detail.component';
 export class SelectModal {
   public uuid: string;
   public label: string;

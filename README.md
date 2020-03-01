@@ -59,3 +59,5 @@ Diğer alternatif angular.json dosyasında içinde styles dizinine bu css eklene
 Heroku'da pipeline 'da oluşan hata loglarını takip etmek için; \
 
     heroku logs -t --app financial-case \
+
+

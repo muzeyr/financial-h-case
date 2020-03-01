@@ -57,10 +57,10 @@ import { MatTreeModule } from '@angular/material/tree';
 import { DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxUiLoaderModule, NgxUiLoaderConfig, POSITION, SPINNER, PB_DIRECTION } from 'ngx-ui-loader';
-import { TransactionDetailComponent } from './components/transaction-detail/transaction-detail.component';
 import { CustomerInfoComponent } from './components/customer-info/customer-info.component';
 import { ToastrModule } from 'ng6-toastr-notifications';
 import { TransactionFindComponent } from './components/transaction/transaction-find/transaction-find.component';
+import { TransactionDetailComponent } from './components/transaction/transaction-detail/transaction-detail.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
