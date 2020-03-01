@@ -17,8 +17,8 @@ Financial House Case Study
 
 # 1.Adım
 Aşağıdaki kod satırı ile yeni proje oluşturabilirsiniz.\
-Would you like to add Angular routing ? (YEs)\
-Would stylesheet format would you like to use? (CSS)\
+Would you like to add Angular routing ? (Yes)\
+Which stylesheet format would you like to use? (CSS)\
 Bootstrap kullanacağım için CSS seçtim. \ 
 
 
