@@ -7,11 +7,11 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-transaction',
-  templateUrl: './transaction.component.html',
-  styleUrls: ['./transaction.component.scss']
+  selector: 'app-transaction-find',
+  templateUrl: './transaction-find.component.html',
+  styleUrls: ['./transaction-find.component.scss']
 })
-export class TransactionComponent implements OnInit {
+export class TransactionFindComponent implements OnInit {
   public clientDetail: TransactionDetail;
   public operationLock = true;
 

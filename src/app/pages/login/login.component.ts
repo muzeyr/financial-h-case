@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/general/authentication.service';
 import { userInfo } from 'os';
 import { UserInfo } from 'src/app/models/user/user-info';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ import { UserInfo } from 'src/app/models/user/user-info';
 export class LoginComponent implements OnInit {
   public form: FormGroup;
   constructor(private readonly formBuilder: FormBuilder,
+              public toastr: ToastrManager,
               private readonly authenticationService: AuthenticationService) {
     this.form = formBuilder.group({
       email: ['demo@financialhouse.io', [Validators.required]],
@@ -31,9 +33,14 @@ export class LoginComponent implements OnInit {
       this.authenticationService.login(user).subscribe(data => {
         data.email = user.email;
         if (data.status === 'APPROVED') {
+          this.toastr.successToastr('', 'Success!');
           localStorage.setItem('currentUser', JSON.stringify(data));
           window.location.href = '/dashboard';
+        } else {
+          this.toastr.errorToastr('Please check ', 'Error!');
         }
+      }, error => {
+        this.toastr.warningToastr('Something is wrong ', 'Error!');
       });
     }
   }

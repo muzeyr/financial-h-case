@@ -60,6 +60,7 @@ import { NgxUiLoaderModule, NgxUiLoaderConfig, POSITION, SPINNER, PB_DIRECTION }
 import { TransactionDetailComponent } from './components/transaction-detail/transaction-detail.component';
 import { CustomerInfoComponent } from './components/customer-info/customer-info.component';
 import { ToastrModule } from 'ng6-toastr-notifications';
+import { TransactionFindComponent } from './components/transaction/transaction-find/transaction-find.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -120,6 +121,7 @@ const materials = [
     LogutComponent,
     CustomerInfoComponent,
     TransactionDetailComponent,
+    TransactionFindComponent,
   ],
   imports: [
     BrowserModule,

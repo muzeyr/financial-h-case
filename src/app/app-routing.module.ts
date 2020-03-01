@@ -5,8 +5,8 @@ import { TransactionReportComponent } from './components/transaction/transaction
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TransactionQueryComponent } from './components/transaction/transaction-query/transaction-query.component';
 import { LogutComponent } from './components/logut/logut.component';
-import { TransactionComponent } from './components/transaction/transaction/transaction.component';
 import { AuthGuard } from './moduls/helps/auth.guard';
+import { TransactionFindComponent } from './components/transaction/transaction-find/transaction-find.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' , pathMatch: 'full' },
@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'logout', component: LogutComponent},
   { path: 'transaction-query', component: TransactionQueryComponent, canActivate: [AuthGuard] },
   { path: 'transaction-report', component: TransactionReportComponent, canActivate: [AuthGuard] },
-  { path: 'transaction/:id', component: TransactionComponent, canActivate: [AuthGuard] }
+  { path: 'transaction/:id', component: TransactionFindComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
