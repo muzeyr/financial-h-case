@@ -4,7 +4,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { AuthenticationService } from 'src/app/services/general/authentication.service';
 import { UserInfo } from 'src/app/models/user/user-info';
 import { Router } from '@angular/router';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-nav',
@@ -21,20 +21,24 @@ export class NavComponent implements OnInit, OnDestroy {
   ];
   public currentUser: UserInfo;
   public mobileQuery: MediaQueryList;
- 
+  public form: FormGroup;
+
   private mobileQuerylistener: () => void;
   @ViewChild('search')public  search: ElementRef;
 
 
   constructor(private authenticationService: AuthenticationService,
               media: MediaMatcher,
+              private readonly formBuilder: FormBuilder,
               private readonly router: Router,
               changeDetectorRef: ChangeDetectorRef) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this.mobileQuerylistener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addEventListener('change', this.mobileQuerylistener);
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-
+    this.form = formBuilder.group({
+      transaction: new FormControl()
+    });
   }
 
   public ngOnInit(): void {
