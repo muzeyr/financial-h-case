@@ -28,7 +28,7 @@ export class JwtInterceptor implements HttpInterceptor {
                     Accept : '*',
                     'Access-Control-Allow-Origin': '*',
                     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
-                    'Access-Control-Request-Headers': 'Authorization, Content-Type'
+                    'Access-Control-Request-Headers': '*'
                 }
             });
         }
