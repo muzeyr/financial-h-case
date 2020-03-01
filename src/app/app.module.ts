@@ -59,6 +59,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxUiLoaderModule, NgxUiLoaderConfig, POSITION, SPINNER, PB_DIRECTION } from 'ngx-ui-loader';
 import { TransactionDetailComponent } from './components/transaction-detail/transaction-detail.component';
 import { CustomerInfoComponent } from './components/customer-info/customer-info.component';
+import { ToastrModule } from 'ng6-toastr-notifications';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -132,6 +133,7 @@ const materials = [
     FormsModule,
     ReactiveFormsModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    ToastrModule.forRoot(),
   ],
   exports: [
     materials
