@@ -42,7 +42,7 @@ export class TransactionFindComponent implements OnInit {
     }, error => {
       this.ngxService.stop();
       this.operationLock = false;
-   
+      this.router.navigateByUrl('/transaction-query');
     });
   }
 }

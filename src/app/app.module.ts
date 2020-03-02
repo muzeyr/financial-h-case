@@ -123,7 +123,7 @@ const materials = [
     TransactionDetailComponent,
     TransactionFindComponent,
   ],
-  entryComponents:[
+  entryComponents: [
     CustomerInfoComponent,
     TransactionDetailComponent
   ],
