@@ -6,6 +6,8 @@ export class TransactionDetail {
     public ipn: any;
     public acquirer: any;
     public refundable: any;
+    public status: string;
+    public message: string;
 }
 export class MerchantTransaction {
 
