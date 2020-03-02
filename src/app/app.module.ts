@@ -123,6 +123,10 @@ const materials = [
     TransactionDetailComponent,
     TransactionFindComponent,
   ],
+  entryComponents:[
+    CustomerInfoComponent,
+    TransactionDetailComponent
+  ],
   imports: [
     BrowserModule,
     CommonModule,
