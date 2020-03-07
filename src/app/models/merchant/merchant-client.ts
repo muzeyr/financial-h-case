@@ -1,9 +1,7 @@
-import { Merchant } from '../merchant/merchant';
 import { Agent } from '../general/agent';
-import { TransactionDetail } from './transaction-detail';
+import { Merchant } from './merchant';
 
-export class MerchantTransaction {
-
+export class MerchantClient {
     public referenceNo: string;
     public merchantId: number;
     public status: string;
@@ -22,20 +20,5 @@ export class MerchantTransaction {
     public transactionId: string;
     public agent: Agent;
     public merchant: Merchant;
-
-}
-
-export class Fx {
-    public merchant: Merchant;
-}
-
-export class TransactionQuery {
-    public perpage: number;
-    public currentpage: number;
-    public nextpageurl: string;
-    public prevpageurl: string;
-    public from: number;
-    public to: number;
-    public data: TransactionDetail[];
-
+    public type: string;
 }
