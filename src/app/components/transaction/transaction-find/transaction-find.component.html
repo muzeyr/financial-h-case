@@ -2,122 +2,19 @@
     <div *ngIf="operationLock">
         <h1 class="font-weight-bold container shadow-lg">Customer Info</h1>
         <div class="row">
-            <div class="col-md-3">
-                <p class="font-weight-bold">Number</p>
-            </div>
-            <div class="col-md-3">
-                {{clientDetail.customerInfo.number}}
-            </div>
-            <div class="col-md-3">
-                <p class="font-weight-bold">Expire Date</p>
-            </div>
-            <div class="col-md-3">
-                {{clientDetail.customerInfo.expiryYear}} /
-                {{clientDetail.customerInfo.expiryMonth}}
-            </div>
+        <app-form-info 
+            [field]="['number','expiryYear','expiryMonth','email','gender']" 
+            [info]="clientDetail.customerInfo"></app-form-info>
 
-            <div class="col-md-3">
-                <p class="font-weight-bold">Email</p>
-            </div>
-            <div class="col-md-3">
-                {{clientDetail.customerInfo.email}}
-            </div>
-
-            <div class="col-md-3">
-                <p class="font-weight-bold">Birthday</p>
-            </div>
-            <div class="col-md-3">
-                {{clientDetail.customerInfo.birthday }}
-            </div>
-            <div class="col-md-3">
-                <p class="font-weight-bold">Gender</p>
-            </div>
-            <div class="col-md-3">
-                {{clientDetail.customerInfo.gender }}
-            </div>
         </div>
         <h1 class="font-weight-bold container shadow-lg">Transaction</h1>
+        <app-form-info 
+            [field]="['message','merchantId','fxTransactionId','acquirerTransactionId','operation','channel','type']" 
+            [info]="clientDetail.transaction.merchant"></app-form-info>
 
-        <div class="row">
-            <div class="col-md-3">
-                <p class="font-weight-bold">Status</p>
-            </div>
-            <div class="col-md-3">
-                {{clientDetail.transaction.merchant.message }}
-            </div>
-
-            <div class="col-md-3">
-                <p class="font-weight-bold">Merchant ID</p>
-
-            </div>
-            <div class="col-md-3">
-                {{clientDetail.transaction.merchant.merchantId }}
-            </div>
-            <div class="col-md-3">
-                <p class="font-weight-bold">Fx ID</p>
-            </div>
-            <div class="col-md-3">
-                {{clientDetail.transaction.merchant.fxTransactionId }}
-            </div>
-
-            <div class="col-md-3">
-                <p class="font-weight-bold">Acquirer ID</p>
-            </div>
-            <div class="col-md-3">
-                {{clientDetail.transaction.merchant.acquirerTransactionId }}
-            </div>
-
-            <div class="col-md-3">
-                <p class="font-weight-bold">Operation</p>
-            </div>
-            <div class="col-md-3">
-                {{clientDetail.transaction.merchant.operation }}
-            </div>
-
-            <div class="col-md-3">
-
-                <p class="font-weight-bold">Channel</p>
-            </div>
-            <div class="col-md-3">
-                {{clientDetail.transaction.merchant.channel }}
-            </div>
-
-            <div class="col-md-3">
-
-                <p class="font-weight-bold">Type</p>
-            </div>
-            <div class="col-md-3">
-                {{clientDetail.transaction.merchant.type }}
-            </div>
-
-        </div>
         <h1 class="font-weight-bold container shadow-lg">Agent</h1>
-
-        <div class="row">
-            <div class="col-md-3">
-                <p class="font-weight-bold"> Customer Ip </p>
-            </div>
-            <div class="col-md-3">
-                {{clientDetail.transaction.merchant.agent.customerIp}}
-            </div>
-            <div class="col-md-3">
-                <p class="font-weight-bold"> Customer User Agent</p>
-            </div>
-            <div class="col-md-3">
-                {{clientDetail.transaction.merchant.agent.customerUserAgent}}
-            </div>
-            <div class="col-md-3">
-                <p class="font-weight-bold">Merchant IP </p>
-            </div>
-            <div class="col-md-3">
-                {{clientDetail.transaction.merchant.agent.merchantIp}}
-            </div>
-            <div class="col-md-3">
-                <p class="font-weight-bold">Merchant User Agent</p>
-            </div>
-            <div class="col-md-3">
-                {{clientDetail.transaction.merchant.agent.merchantUserAgent}}
-            </div>
-        </div>
+        <app-form-info 
+            [field]="['customerIp','customerUserAgent','customerIp','merchantIp','merchantUserAgent']" 
+            [info]="clientDetail.transaction.merchant.agent"></app-form-info>
     </div> 
 </div>
