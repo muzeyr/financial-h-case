@@ -61,6 +61,7 @@ import { CustomerInfoComponent } from './components/customer-info/customer-info.
 import { ToastrModule } from 'ng6-toastr-notifications';
 import { TransactionFindComponent } from './components/transaction/transaction-find/transaction-find.component';
 import { TransactionDetailComponent } from './components/transaction/transaction-detail/transaction-detail.component';
+import { TransactionCardComponent } from './components/transaction/transaction-card/transaction-card.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -122,6 +123,7 @@ const materials = [
     CustomerInfoComponent,
     TransactionDetailComponent,
     TransactionFindComponent,
+    TransactionCardComponent,
   ],
   entryComponents: [
     CustomerInfoComponent,
