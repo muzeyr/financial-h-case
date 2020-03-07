@@ -25,10 +25,6 @@ export class MerchantTransaction {
 
 }
 
-export class Fx {
-    public merchant: Merchant;
-}
-
 export class TransactionQuery {
     public perpage: number;
     public currentpage: number;

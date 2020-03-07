@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TransactionService } from 'src/app/services/transaction/transaction.service';
 import { TransactionClient } from 'src/app/models/transaction/transaction-client';
-import { TransactionDetail } from 'src/app/models/transaction/transaction-query';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import { TransactionDetail } from 'src/app/models/transaction/transaction-detail';
 
 @Component({
   selector: 'app-transaction-find',

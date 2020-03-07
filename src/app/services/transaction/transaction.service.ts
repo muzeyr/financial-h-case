@@ -5,9 +5,10 @@ import {HttpClient} from '@angular/common/http';
 import { TransactionReport } from 'src/app/models/transaction/transaction-report';
 import { TransactionResponse } from 'src/app/models/transaction/transaction-response';
 import { TransactionClient } from 'src/app/models/transaction/transaction-client';
-import { CustomerInfo, TransactionQuery, TransactionDetail } from './../../models/transaction/transaction-query';
 import { Injectable } from '@angular/core';
 import { TransactionRequest } from './../../models/transaction/transaction-request';
+import { TransactionQuery } from 'src/app/models/transaction/transaction-query';
+import { TransactionDetail } from 'src/app/models/transaction/transaction-detail';
 
 @Injectable({
     providedIn: 'root'

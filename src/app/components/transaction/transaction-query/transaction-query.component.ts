@@ -3,8 +3,6 @@ import { TransactionService } from 'src/app/services/transaction/transaction.ser
 import { TransactionReport } from 'src/app/models/transaction/transaction-report';
 import { NgbDate, NgbCalendar, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { TransactionRequest } from '../../../models/transaction/transaction-request';
-import { TransactionQuery, TransactionDetail, MerchantTransaction,
-    MerchantTransactionClient, MerchantClient } from 'src/app/models/transaction/transaction-query';
 import { TransactionClient } from 'src/app/models/transaction/transaction-client';
 import { MatTableDataSource } from '@angular/material/table';
 import { PageEvent } from '@angular/material/paginator';
@@ -12,12 +10,15 @@ import { Pageable } from 'src/app/models/general/pageable';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { CustomerInfo } from './../../../models/transaction/transaction-query';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { CustomerInfoComponent } from '../../customer-info/customer-info.component';
 import { Router } from '@angular/router';
 import { ToastrManager } from 'ng6-toastr-notifications';
 import { TransactionDetailComponent } from '../transaction-detail/transaction-detail.component';
+import { TransactionQuery, MerchantTransaction } from 'src/app/models/transaction/transaction-query';
+import { TransactionDetail } from 'src/app/models/transaction/transaction-detail';
+import { MerchantClient } from 'src/app/models/merchant/merchant-client';
+import { CustomerInfo } from 'src/app/models/general/customer-info';
 export class SelectModal {
   public uuid: string;
   public label: string;

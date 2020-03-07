@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CustomerInfo } from 'src/app/models/transaction/transaction-query';
-
+import { CustomerInfo } from 'src/app/models/general/customer-info';
 @Component({
   selector: 'app-customer-info',
   templateUrl: './customer-info.component.html',

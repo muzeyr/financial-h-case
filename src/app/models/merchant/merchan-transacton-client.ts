@@ -1,4 +1,4 @@
-import { MerchantClient } from '../transaction/transaction-query';
+import { MerchantClient } from './merchant-client';
 
 export class MerchantTransactionClient {
     public merchant: MerchantClient;
