@@ -9,6 +9,7 @@ import {AppFormInfo} from 'src/app/models/general/form-info';
 export class FormInfoComponent implements OnInit {
 
   @Input() field: string[];
+  @Input() title: string;
   @Input() info: any;
   public lbl: string[];
   public formInfos: AppFormInfo[];

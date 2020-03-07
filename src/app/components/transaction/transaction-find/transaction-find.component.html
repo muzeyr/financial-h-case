@@ -1,20 +1,13 @@
 <div class="container">
     <div *ngIf="operationLock">
-        <h1 class="font-weight-bold container shadow-lg">Customer Info</h1>
-        <div class="row">
-        <app-form-info 
+        <app-form-info title="Customer Info"
             [field]="['number','expiryYear','expiryMonth','email','gender']" 
             [info]="clientDetail.customerInfo"></app-form-info>
-
-        </div>
-        <h1 class="font-weight-bold container shadow-lg">Transaction</h1>
-        <app-form-info 
+        <app-form-info  title="Transaction"
             [field]="['message','merchantId','fxTransactionId','acquirerTransactionId','operation','channel','type']" 
             [info]="clientDetail.transaction.merchant"></app-form-info>
-
-        <h1 class="font-weight-bold container shadow-lg">Agent</h1>
-        <app-form-info 
+        <app-form-info title="Agent"
             [field]="['customerIp','customerUserAgent','customerIp','merchantIp','merchantUserAgent']" 
             [info]="clientDetail.transaction.merchant.agent"></app-form-info>
-    </div> 
+</div>
 </div>
