@@ -31,11 +31,11 @@ export class FormInfoComponent implements OnInit {
         formInfo.val =  this.info[label];
 
         for (let i = 0; i < label.length; i++) {
-          if (label.charAt(i) === label.charAt(i).toUpperCase()){
-              formInfo.label = label.substring(0,i) + ' ' + label.substring(i, label.length);
+          if (label.charAt(i) === label.charAt(i).toUpperCase()) {
+              formInfo.label = label.substring(0, i) + ' ' + label.substring(i, label.length);
           }
         }
-        formInfo.label = formInfo.label.replace('_',' ');
+        formInfo.label = formInfo.label.replace('_', ' ');
         if (this.fieldCheck(label)) {
           controller.formInfos.push(formInfo);
         }
@@ -48,7 +48,7 @@ export class FormInfoComponent implements OnInit {
   public fieldCheck(f: string): boolean {
     let isCheck = false;
     this.field.forEach(fld => {
-        if (fld ===f) {
+        if (fld === f) {
           isCheck = true;
         }
     });
