@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { UserInfo } from '../../models/user/user-info';
-import { UserRespnse } from 'src/app/models/user/user-response';
 import { Injectable } from '@angular/core';
 
 
@@ -26,7 +25,7 @@ export class AuthenticationService {
     }
 
     public login = (user: UserInfo) => {
-        return this.http.post<UserRespnse>(`${environment.url}${this.endpoint}/login`, user);
+        return this.http.post<UserInfo>(`${environment.url}${this.endpoint}/login`, user);
     }
 
     public logout = () => {
