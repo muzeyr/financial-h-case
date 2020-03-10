@@ -9,9 +9,11 @@ export class TransactionCardComponent implements OnInit {
 
   @Input()  cards: Response[];
   public showDiv: boolean;
+  public cartType: string[];
 
   constructor() {
     this.showDiv = false;
+    this.cartType = ['success', 'warning', 'danger', 'dark'];
    }
 
   ngOnInit(): void {
@@ -20,6 +22,6 @@ export class TransactionCardComponent implements OnInit {
   }
 
   public randomCss(): string {
-    return 'success';
+    return this.cartType[Math.floor(Math.random() * Math.floor(2))];
   }
 }

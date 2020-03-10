@@ -34,7 +34,7 @@
               </button>
         </div>
     </div>
-      <app-transaction-card [cards]="transactionResponse.response">
+      <app-transaction-card *ngIf="isLoadComplate" [cards]="transactionResponse.response">
       </app-transaction-card>
   </form>
 </div>
