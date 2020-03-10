@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-transaction-card',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionCardComponent implements OnInit {
 
-  constructor() { }
+  @Input()  cards: Response[];
+  public showDiv: boolean;
+
+  constructor() {
+    this.showDiv = false;
+   }
 
   ngOnInit(): void {
+    this.showDiv = true;
+
   }
 
+  public randomCss(): string {
+    return 'success';
+  }
 }
