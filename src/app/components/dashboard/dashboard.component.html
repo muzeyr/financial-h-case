@@ -1,1 +1,20 @@
-<app-transaction-report [transactionReportProps]="transactionReq"></app-transaction-report>
+<div class="row">
+    <div class="col-md-4">
+        <app-lbd-chart
+          [title]="'Bank Account'"
+          [chartClass]="'ct-perfect-fourth'"
+          [chartType]="accoundChartType"
+          [chartData]="accoundChartData"
+          [legendItems]="accoundChartLegendItems"
+          [withHr]="true"
+          [footerText]="'Updated 3 minutes ago'"
+          [footerIconClass]="'fa fa-clock-o'">
+        </app-lbd-chart>
+    </div>
+    <div class="col-md-8">
+        <app-transaction-report [transactionReportProps]="transactionReq"></app-transaction-report>
+
+    </div>
+    
+</div>
+

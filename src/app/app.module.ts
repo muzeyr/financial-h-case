@@ -63,6 +63,7 @@ import { TransactionFindComponent } from './components/transaction/transaction-f
 import { TransactionDetailComponent } from './components/transaction/transaction-detail/transaction-detail.component';
 import { TransactionCardComponent } from './components/transaction/transaction-card/transaction-card.component';
 import { FormInfoComponent } from './components/form-info/form-info.component';
+import { LbdModule } from './components/lbd/lbd.module';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -144,6 +145,7 @@ const materials = [
     ReactiveFormsModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     ToastrModule.forRoot(),
+    LbdModule
   ],
   exports: [
     materials
