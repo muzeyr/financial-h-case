@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
       const user = new UserInfo();
       user.email = this.form.value.email;
       user.password = this.form.value.password;
-      console.log('...');
       this.authenticationService.login(user).subscribe(data => {
         data.email = user.email;
         if (data.status === 'APPROVED') {

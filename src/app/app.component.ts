@@ -13,8 +13,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AppComponent implements OnDestroy {
   public title = 'financial-house';
-  mobileQuery: MediaQueryList;
-  currentUser: UserInfo;
+  public mobileQuery: MediaQueryList;
+  public currentUser: UserInfo;
   public form: FormGroup;
 
   private mobileQuerylistener: () => void;

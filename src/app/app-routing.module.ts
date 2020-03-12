@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'dashboard' , pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent},
-  { path: 'logout', component: LogutComponent},
+  { path: 'log-out', component: LogutComponent},
   { path: 'transaction-query', component: TransactionQueryComponent, canActivate: [AuthGuard] },
   { path: 'transaction-report', component: TransactionReportComponent, canActivate: [AuthGuard] },
   { path: 'transaction/:id', component: TransactionFindComponent, canActivate: [AuthGuard] }

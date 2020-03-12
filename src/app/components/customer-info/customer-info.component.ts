@@ -19,12 +19,7 @@ export class CustomerInfoComponent implements OnInit {
    }
 
   public ngOnInit(): void {
-    if (this.customerInfo) {
-      this.showDiv = true;
-    } else {
-      this.showDiv = false;
-
-    }
+    this.showDiv = !!this.customerInfo;
   }
 
 }

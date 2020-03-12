@@ -17,7 +17,7 @@ export class NavComponent implements OnInit, OnDestroy {
     { title: 'Dashboard', url: 'dashboard', icon: 'dashboard' },
     { title: 'Transaction Report', url: 'transaction-report', icon: 'dehaze' },
     { title: 'Transaction Query', url: 'transaction-query', icon: 'report' },
-    { title: 'Logout', url: 'logout', icon: 'power_settings_new' },
+    { title: 'Logout', url: 'log-out', icon: 'power_settings_new' },
   ];
   public currentUser: UserInfo;
   public mobileQuery: MediaQueryList;
@@ -53,13 +53,11 @@ export class NavComponent implements OnInit, OnDestroy {
   }
 
   public onKeydown(event: any): void {
-    if (event.key === 'Enter') {
-        if ( this.search.nativeElement.value !== '') {
+    if (event.key === 'Enter' && this.search.nativeElement.value !== '') {
             this.router.navigate(['/transaction/' + this.search.nativeElement.value.trim()]);
             this.search.nativeElement.value = '';
 
         }
     }
-  }
 
 }
