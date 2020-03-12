@@ -1,0 +1,7 @@
+{
+    "prettier.jsxSingleQuote": true,
+    "prettier.singleQuote": true,
+    "typescriptHero.imports.organizeOnSave": true,
+    "html.format.wrapAttributes": "force-aligned",
+    "html.format.enable": true,
+}
