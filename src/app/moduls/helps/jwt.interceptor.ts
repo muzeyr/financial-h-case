@@ -11,7 +11,6 @@ export class JwtInterceptor implements HttpInterceptor {
     public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const currentUser = this.authenticationService.currentUserValue;
         if (currentUser && currentUser.token) {
-            if (currentUser !== null) {
                 request = request.clone({
                     setHeaders: {
                         Accept : '*',
@@ -20,9 +19,7 @@ export class JwtInterceptor implements HttpInterceptor {
                         Authorization: `${currentUser.token}`
                     }
                 });
-            }
         } else {
-            console.log('Access2....');
             request = request.clone({
                 setHeaders: {
                     Accept : '*',

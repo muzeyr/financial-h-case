@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NavComponent } from './components/nav/nav.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -19,8 +19,7 @@ import { LogutComponent } from './components/logut/logut.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MAT_LABEL_GLOBAL_OPTIONS, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MatIconRegistry } from '@angular/material/icon';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
@@ -68,12 +67,11 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
   bgsPosition: POSITION.bottomCenter,
   bgsSize: 40,
-  bgsType: SPINNER.rectangleBounce, // background spinner type
-  fgsType: SPINNER.chasingDots, // foreground spinner type
-  pbDirection: PB_DIRECTION.leftToRight, // progress bar direction
-  pbThickness: 5, // progress bar thickness
+  bgsType: SPINNER.rectangleBounce,
+  fgsType: SPINNER.chasingDots,
+  pbDirection: PB_DIRECTION.leftToRight,
+  pbThickness: 5,
 };
-
 const materials = [
   MatAutocompleteModule,
   MatBadgeModule,

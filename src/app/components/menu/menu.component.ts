@@ -11,7 +11,7 @@ export class MenuComponent implements OnInit {
     {title: 'Dashboard' , url: 'dashboard', icon: 'fa-home'},
     {title: 'Transaction Report' , url: 'transaction-report', icon: 'fa-filter'},
     {title: 'Transaction Query' , url: 'transaction-query', icon: 'fa-query'},
-    {title: 'Logout' , url: 'logout', icon: 'fa-quit'},
+    {title: 'Logout' , url: 'log-out', icon: 'fa-quit'},
   ];
 
   constructor() { }

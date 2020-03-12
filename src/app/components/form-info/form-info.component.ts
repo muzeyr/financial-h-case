@@ -20,9 +20,9 @@ export class FormInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const controller = this;
+
     if (this.info) {
-      console.log(this.info);
+
       this.lbl = Object.keys(this.info);
       this.lbl.forEach(label => {
         const formInfo = new AppFormInfo();
@@ -37,7 +37,7 @@ export class FormInfoComponent implements OnInit {
         }
         formInfo.label = formInfo.label.replace('_', ' ');
         if (this.fieldCheck(label)) {
-          controller.formInfos.push(formInfo);
+          this.formInfos.push(formInfo);
         }
       });
     }
