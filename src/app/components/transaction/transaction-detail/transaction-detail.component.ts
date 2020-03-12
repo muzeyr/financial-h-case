@@ -1,11 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { TransactionService } from 'src/app/services/transaction/transaction.service';
+import { MerchantTransaction } from 'src/app/models/merchant/merchant-transaction';
 import { TransactionClient } from 'src/app/models/transaction/transaction-client';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MerchantTransaction } from 'src/app/models/transaction/transaction-query';
 import { TransactionDetail } from 'src/app/models/transaction/transaction-detail';
+import { TransactionService } from 'src/app/services/transaction/transaction.service';
 
 @Component({
   selector: 'app-transaction-detail',

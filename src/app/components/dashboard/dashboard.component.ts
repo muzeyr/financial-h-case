@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/app/services/general/authentication.service';
-import { UserInfo } from './../../models/user/user-info';
-import { TransactionRequest } from 'src/app/models/transaction/transaction-request';
-import { TransactionReport } from 'src/app/models/transaction/transaction-report';
-import * as Chartist from 'chartist';
-import { ChartType, LegendItem } from '../lbd/lbd-chart/lbd-chart.component';
-import { TransactionService } from 'src/app/services/transaction/transaction.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { TransactionReport } from 'src/app/models/transaction/transaction-report';
 import { TransactionResponse } from 'src/app/models/transaction/transaction-response';
+import { AuthenticationService } from 'src/app/services/general/authentication.service';
+import { TransactionService } from 'src/app/services/transaction/transaction.service';
+
+import { ChartType, LegendItem } from '../lbd/lbd-chart/lbd-chart.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -50,9 +48,9 @@ export class DashboardComponent implements OnInit {
       series: [62, 32, 6]
     };
     this.accoundChartLegendItems = [
-      { title: 'Open', imageClass: 'fa fa-circle text-info' },
-      { title: 'Bounce', imageClass: 'fa fa-circle text-danger' },
-      { title: 'Unsubscribe', imageClass: 'fa fa-circle text-warning' }
+      { title: 'TL', imageClass: 'fa fa-circle text-info' },
+      { title: 'Euro', imageClass: 'fa fa-circle text-danger' },
+      { title: 'Rub', imageClass: 'fa fa-circle text-warning' }
     ];
   }
 

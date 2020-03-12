@@ -1,8 +1,4 @@
-export class Response {
-    public currency: string;
-    public total: string;
-    public count: string;
-}
+import { Response } from '../general/response';
 
 export class TransactionResponse {
     public status: string;

@@ -1,24 +1,25 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { TransactionService } from 'src/app/services/transaction/transaction.service';
-import { TransactionReport } from 'src/app/models/transaction/transaction-report';
-import { NgbDate, NgbCalendar, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
-import { TransactionRequest } from '../../../models/transaction/transaction-request';
-import { TransactionClient } from 'src/app/models/transaction/transaction-client';
-import { MatTableDataSource } from '@angular/material/table';
-import { PageEvent } from '@angular/material/paginator';
-import { Pageable } from 'src/app/models/general/pageable';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { CustomerInfoComponent } from '../../customer-info/customer-info.component';
+import { PageEvent } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { NgbCalendar, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrManager } from 'ng6-toastr-notifications';
-import { TransactionDetailComponent } from '../transaction-detail/transaction-detail.component';
-import { TransactionQuery, MerchantTransaction } from 'src/app/models/transaction/transaction-query';
-import { TransactionDetail } from 'src/app/models/transaction/transaction-detail';
-import { MerchantClient } from 'src/app/models/merchant/merchant-client';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { CustomerInfo } from 'src/app/models/general/customer-info';
+import { Pageable } from 'src/app/models/general/pageable';
+import { MerchantClient } from 'src/app/models/merchant/merchant-client';
+import { MerchantTransaction } from 'src/app/models/merchant/merchant-transaction';
+import { TransactionDetail } from 'src/app/models/transaction/transaction-detail';
+import { TransactionQuery } from 'src/app/models/transaction/transaction-query';
+import { TransactionService } from 'src/app/services/transaction/transaction.service';
+
+import { TransactionRequest } from '../../../models/transaction/transaction-request';
+import { CustomerInfoComponent } from '../../customer-info/customer-info.component';
+import { TransactionDetailComponent } from '../transaction-detail/transaction-detail.component';
+
 export class SelectModal {
   public uuid: string;
   public label: string;

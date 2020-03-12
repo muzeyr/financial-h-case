@@ -1,5 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Response } from 'src/app/models/general/response';
 
+enum CartType {
+  success,
+  warning,
+  danger,
+  dark
+}
 @Component({
   selector: 'app-transaction-card',
   templateUrl: './transaction-card.component.html',
@@ -7,21 +14,22 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TransactionCardComponent implements OnInit {
 
-  @Input()  cards: Response[];
+  @Input() cards: Response[];
   public showDiv: boolean;
   public cartType: string[];
 
   constructor() {
+
     this.showDiv = false;
-    this.cartType = ['success', 'warning', 'danger', 'dark'];
-   }
+  }
 
   ngOnInit(): void {
-    this.showDiv = true;
 
+    this.showDiv = true;
   }
 
   public randomCss(): string {
-    return this.cartType[Math.floor(Math.random() * Math.floor(2))];
+
+    return CartType[Math.floor(Math.random() * Math.floor(2))];
   }
 }

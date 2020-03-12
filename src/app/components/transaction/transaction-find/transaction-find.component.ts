@@ -21,22 +21,30 @@ export class TransactionFindComponent implements OnInit {
               public toastr: ToastrManager,
               private readonly router: Router,
               private readonly transactionService: TransactionService) {
-    this.transactionClient = new TransactionClient();
-    this.transactionClient.transactionId = this.activatedRouter.snapshot.params['id'];
   }
 
   public ngOnInit(): void {
+    this.activatedRouter.paramMap
+      .subscribe(param => {
 
-    this.transactionService.get(this.transactionClient).subscribe(data => {
-      if (data.status === 'DECLINED') {
-        this.toastr.warningToastr(data.message);
-        this.router.navigateByUrl('/transaction-query');
-        return;
+        this.ngxService.start();
 
-      }
-      this.clientDetail = data;
-      this.operationLock = true;
-      this.ngxService.stop();
+        this.transactionClient = new TransactionClient();
+        this.transactionClient.transactionId = param.get('id');
+
+        this.transactionService.get(this.transactionClient).subscribe(data => {
+
+          if (data.status === 'DECLINED') {
+            this.toastr.warningToastr(data.message);
+            this.router.navigateByUrl('/transaction-query');
+            return;
+          }
+
+          this.clientDetail = data;
+          this.operationLock = true;
+          this.ngxService.stop();
+        });
     });
+
   }
 }
