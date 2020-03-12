@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-transaction-card',
@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionCardComponent implements OnInit {
 
-  constructor() { }
+  @Input()  cards: Response[];
+  public showDiv: boolean;
+  public cartType: string[];
+
+  constructor() {
+    this.showDiv = false;
+    this.cartType = ['success', 'warning', 'danger', 'dark'];
+   }
 
   ngOnInit(): void {
+    this.showDiv = true;
+
   }
 
+  public randomCss(): string {
+    return this.cartType[Math.floor(Math.random() * Math.floor(2))];
+  }
 }
